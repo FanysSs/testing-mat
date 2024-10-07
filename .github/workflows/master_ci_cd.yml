@@ -21,13 +21,13 @@ jobs:
         run: |
           npm test -- --no-watch --no-progress --browsers=ChromeHeadlessCI
           
-      - name: build angular, output in dist/Unit-Testing
+      - name: build angular, output in D:/UV/Unit-Testing/unit-testing
         run: |
-          CI=flase npm run build
+          CI=false npm run build -- --output-path=D:/UV/Unit-Testing/unit-testing
 
       - name: show dir
         run: |
-          ls -la dist/Unit-Testing/browser
+          ls -la D:/UV/Unit-Testing/unit-testing/browser
 
       - name: download, run httpd image, container name apache
         run: |
@@ -39,7 +39,7 @@ jobs:
 
       - name: cp angular build to container
         run: |
-          docker cp dist/Unit-Testing/browser/. serving_base:/usr/local/apache2/htdocs
+          docker cp D:/UV/Unit-Testing/unit-testing/browser/. serving_base:/usr/local/apache2/htdocs
 
       - name: list container
         run: |
@@ -60,3 +60,4 @@ jobs:
 
       - name: Docker push
         run: docker push ${{secrets.DOCKER_USER}}/${{secrets.MODEL_NAME}}:${{github.sha}}
+

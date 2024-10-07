@@ -39,7 +39,7 @@ jobs:
 
       - name: cp angular build to container
         run: |
-          docker cp D:/UV/Unit-Testing/unit-testing/browser/. serving_base:/usr/local/apache2/htdocs
+          docker cp ./dist/Unit-Testing/browser/. serving_base:/usr/local/apache2/htdocs
 
       - name: list container
         run: |

@@ -5,9 +5,10 @@ describe('compute test suite', () => {
         const result = compute(-1);
         expect(result).toBe(0);
     });
-    
+
     it('should increment the input if input is positive', () => {
         const result = compute(1);
         expect(result).toBe(2);
     });
 });
+

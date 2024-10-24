@@ -1,8 +1,6 @@
-import { ComponentFixture, TestBed } from "@angular/core/testing";
-import { SimpsonComponent } from "./simpson.component";
 import { SimpsonRule } from "./simpson_rule";
 
-describe('SimpsonRule', () => {
+describe('ReglaSImpson', () => {
   it('should return 16.0 for f(x) = 2x, x0 = 0, x1 = 4, numSeg = 4, ERROR = 0.0001', () => {
     const result = SimpsonRule.simpson(0, 4, 4, 0.0001, SimpsonRule.fx_2x);
     expect(result).toBeCloseTo(16.0, 2);
@@ -19,17 +17,17 @@ describe('SimpsonRule', () => {
   });
 
   it('should return 0.35006 for x0=0, x1=1.1, dof=9, error=0.00001', () => {
-    const result = SimpsonRule.TStudent(1.1, 10, 9, 0.00001)
+    const result = SimpsonRule.TStudent(0,1.1, 10, 9, 0.00001)
     expect(result).toBeCloseTo(0.35006, 4);
   });
 
   it('should return 0.36757 for x0=0, x1=1.1812, dof=10, error=0.00001', () => {
-    const result = SimpsonRule.TStudent(1.1812, 10, 10, 0.00001)
+    const result = SimpsonRule.TStudent(0,1.1812, 10, 10, 0.00001)
     expect(result).toBeCloseTo(0.36757, 4);
   });
 
   it('should return 0.49500 for x0=0, x1=2.750, dof=30, error=0.00001', () => {
-    const result = SimpsonRule.TStudent(2.750, 10, 30, 0.00001)
+    const result = SimpsonRule.TStudent(0, 2.750, 10, 30, 0.00001)
     expect(result).toBeCloseTo(0.49500, 4);
   });
 });

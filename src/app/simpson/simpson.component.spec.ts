@@ -15,7 +15,8 @@ describe('ReglaSImpson', () => {
     const result = SimpsonRule.simpson(1, 4, 6, 0.001, SimpsonRule.fx_1_x);
     expect(result).toBeCloseTo(1.38, 1);
   });
-
+  
+//gamma
   it('should return 0.35006 for x0=0, x1=1.1, dof=9, error=0.00001', () => {
     const result = SimpsonRule.TStudent(0,1.1, 10, 9, 0.00001)
     expect(result).toBeCloseTo(0.35006, 4);

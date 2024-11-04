@@ -1,1 +1,7 @@
-<p>media works!</p>
+<div class="container">
+    <h2>Calcular Media</h2>
+    <label for="valores">Ingrese números separados por comas:</label>
+    <input type="text" id="valores" [(ngModel)]="valoresInput" placeholder="Ej. 1, 2, 3, 4, 5">
+    <button (click)="calcularYMostrarMedia()">Calcular Media</button>
+    <p *ngIf="resultado">{{ resultado }}</p>
+  </div>

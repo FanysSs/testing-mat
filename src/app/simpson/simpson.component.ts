@@ -1,27 +1,40 @@
 import { Component } from '@angular/core';
+import { SimpsonRule } from './simpson_rule';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-simpson',
   standalone: true,
-  imports: [],
+  imports: [CommonModule, FormsModule],
   templateUrl: './simpson.component.html',
-  styleUrl: './simpson.component.css'
+  styleUrls: ['./simpson.component.css']
 })
-
 export class SimpsonComponent {
-  simpson(
-    f: (x: number) => number,
-    x0: number,
-    x1: number,
-    num_seg: number,
-  ): number {
-    const h = (x1 - x0) / num_seg;
-    let sum = f(x0) + f(x1);
-    for (let i = 1; i < num_seg; i++) {
-      const x = x0 + i * h;
-      sum += (i % 2 === 0 ? 2 : 4) * f(x);
+  x0: number | null = null;
+  x1: number | null = null;
+  numSeg: number | null = null;
+  error: number | null = null;
+  dof: number | null = null;
+  resultadoSimpson: number | null = null;
+  resultadoTStudent: number | null = null;
+  resultado: string | null = null;
+
+  calcularSimpson(): void {
+    if (this.x0 !== null && this.x1 !== null && this.numSeg !== null && this.error !== null) {
+      this.resultadoSimpson = SimpsonRule.simpson(this.x0, this.x1, this.numSeg, this.error, SimpsonRule.fx_2x);
+      this.resultado = `Resultado de Simpson: ${this.resultadoSimpson}`;
+    } else {
+      this.resultado = 'Por favor, ingrese todos los valores necesarios.';
     }
-    return (h / 3) * sum;
+  }
+
+  calcularTStudent(): void {
+    if (this.x1 !== null && this.numSeg !== null && this.dof !== null && this.error !== null) {
+      this.resultadoTStudent = SimpsonRule.TStudent(this.x1, this.numSeg, this.dof, this.error);
+      this.resultado = `Resultado de T-Student: ${this.resultadoTStudent}`;
+    } else {
+      this.resultado = 'Por favor, ingrese todos los valores necesarios.';
+    }
   }
 }
-

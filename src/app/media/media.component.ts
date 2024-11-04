@@ -1,33 +1,36 @@
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-media',
   standalone: true,
-  imports: [],
+  imports: [FormsModule, CommonModule],
   templateUrl: './media.component.html',
   styleUrls: ['./media.component.css']
 })
 export class MediaComponent {
-  media1: number | null = null;
-  media2: number | null = null;
+  valoresInput: string = '';
+  resultado: string | null = null;
 
-  calculateMedia(file: File): void {
-    const reader = new FileReader();
-    reader.onload = (event: ProgressEvent<FileReader>) => {
-      const content = event.target?.result as string;
-      const lines = content.split('\n');
-
-      const numbers1 = lines[0].split(',').map(num => parseFloat(num.trim()));
-      this.media1 = this.computeAverage(numbers1);
-
-      const numbers2 = lines[1].split(',').map(num => parseFloat(num.trim()));
-      this.media2 = this.computeAverage(numbers2);
-    };
-    reader.readAsText(file);
+  calcularMedia(valores: number[]): number {
+    const suma = valores.reduce((a, b) => a + b, 0);
+    const media = suma / valores.length;
+    return +media.toFixed(2);
   }
 
   public computeAverage(numbers: number[]): number {
     const sum = numbers.reduce((acc, curr) => acc + curr, 0);
-    return Math.round((sum / numbers.length) * 100) / 100;
+    return parseFloat((sum / numbers.length).toFixed(2));
+  }
+
+  calcularYMostrarMedia(): void {
+    const valores = this.valoresInput.split(',').map(num => parseFloat(num.trim()));
+    if (valores.some(isNaN)) {
+      this.resultado = 'Por favor, ingrese solo números válidos.';
+      return;
+    }
+    const media = this.calcularMedia(valores);
+    this.resultado = `La media es: ${media}`;
   }
 }

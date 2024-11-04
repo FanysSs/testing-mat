@@ -77,19 +77,21 @@ export class SimpsonRule {
     }
   }
 
-  static TStudent(x0:number, x: number, num_seg: number, dof: number, e: number): number {
-    let count = 1; 
-    let check_e = 0; 
-    let lon = num_seg; 
-    let w = x / lon; 
-    let suma = 0; 
-    let resul_check = 0; 
+  static TStudent(x: number, num_seg: number, dof: number, e: number): number {
+    let count = 1; // Contador de vueltas
+    let check_e = 0; // Valor de la iteración anterior
+    let lon = num_seg; // Número de segmentos
+    let w = x / lon; // Tamaño del paso
+    let suma = 0; // Suma inicial
+    let resul_check = 0; // Resultado de la comparación
 
     do {
-      console.log("VUELTA:" + {count});
-      w = x / lon; 
-      suma = 0; 
-      for (let i = x0; i <= lon; i++) {
+      console.log("VUELTA: " + count);
+      w = x / lon; // Recalcular el tamaño del paso
+      suma = 0; // Reiniciar la suma para cada vuelta
+
+      // Bucle para calcular la suma
+      for (let i = 0; i <= lon; i++) {
         let xi = w * i;
         let firstPart = this.TStudent_FirstPart(xi, dof);
         let secondPart = this.TStudent_SecondPart(dof);

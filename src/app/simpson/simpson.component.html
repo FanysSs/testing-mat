@@ -1,1 +1,30 @@
-<p>simpson works!</p>
+<div class="container">
+    <h2>Calcular con la Regla de Simpson y T-Student</h2>
+    
+    <div>
+      <h3>Regla de Simpson</h3>
+      <label for="x0">x0:</label>
+      <input type="number" id="x0" [(ngModel)]="x0">
+      
+      <label for="x1">x1:</label>
+      <input type="number" id="x1" [(ngModel)]="x1">
+      
+      <label for="numSeg">Número de Segmentos:</label>
+      <input type="number" id="numSeg" [(ngModel)]="numSeg">
+      
+      <label for="error">Error:</label>
+      <input type="number" id="error" [(ngModel)]="error" step="0.0000001">
+      
+      <button (click)="calcularSimpson()">Calcular Regla de Simpson</button>
+    </div>
+  
+    <div>
+      <h3>T-Student</h3>
+      <label for="dof">Grados de Libertad (DOF):</label>
+      <input type="number" id="dof" [(ngModel)]="dof">
+      
+      <button (click)="calcularTStudent()">Calcular T-Student</button>
+    </div>
+  
+    <p *ngIf="resultado">{{ resultado }}</p>
+  </div>

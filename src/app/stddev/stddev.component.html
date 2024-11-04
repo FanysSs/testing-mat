@@ -1,1 +1,9 @@
-<p>stddev works!</p>
+<div class="container">
+    <h2>Calcular Desviación Estándar</h2>
+    <label for="valores">Ingrese números separados por comas:</label>
+    <input type="text" id="valores" [(ngModel)]="valoresInput" placeholder="Ej. 1, 2, 3, 4, 5">
+    
+    <button (click)="calcular()">Calcular Desviación Estándar</button>
+    
+    <p *ngIf="resultado">{{ resultado }}</p>
+  </div>

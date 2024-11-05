@@ -1,26 +1,23 @@
-<h3> <b> unit-testing </b> </h3>
+<h3><b>unit-testing</b></h3>
 <nav>
   <ul>
-    <li><a routerLink="/media">
-		    media
-	</a>
+    <li class="dropdown">
+      <a href="#">A1</a>
+      <div class="dropdown-content">
+        <a routerLink="/media">media</a>
+        <a routerLink="/stddev">stddev</a>
+      </div>
     </li>
-    <li><a routerLink="/stddev">
-		    stddev
-	</a>
+    <li class="dropdown">
+      <a href="#">A3</a>
+      <div class="dropdown-content">
+        <a routerLink="/linear-regression">linear-regression</a>
+        <a routerLink="/correlation">correlation</a>
+      </div>
     </li>
-    <li><a routerLink="/correlation">
-        correlation
-	</a>
+    <li class="dropdown">
+      <a routerLink="/simpson">A5</a>
     </li>
-    <li><a routerLink="/linear-regression">
-		    linear-regression
-	</a>
-    </li>
-    <li><a routerLink="/simpson">
-        simpson
-    </a></li>
-	
   </ul>
 </nav>
 <router-outlet></router-outlet>

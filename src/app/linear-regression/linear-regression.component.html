@@ -1,12 +1,23 @@
 <div class="container">
     <h2>Calcular Regresión Lineal</h2>
-    <label for="xValues">Ingrese valores de X (separados por comas):</label>
-    <input type="text" id="xValues" [(ngModel)]="xInput" placeholder="Ej. 1, 2, 3, 4, 5">
-    
-    <label for="yValues">Ingrese valores de Y (separados por comas):</label>
-    <input type="text" id="yValues" [(ngModel)]="yInput" placeholder="Ej. 2, 3, 4, 5, 6">
-    
-    <button (click)="calcular()">Calcular Regresión Lineal</button>
-    
-    <p *ngIf="resultado">{{ resultado }}</p>
+  
+    <div class="section">
+      <label for="xInput">Ingrese los valores de X (separados por comas):</label>
+      <input [(ngModel)]="xInput" id="xInput" type="text">
+  
+      <label for="yInput">Ingrese los valores de Y (separados por comas):</label>
+      <input [(ngModel)]="yInput" id="yInput" type="text">
+  
+      <button (click)="calcular()">Calcular Regresión</button>
+      <p *ngIf="resultado" class="resultado">Resultado: {{ resultado }}</p>
+    </div>
+  
+    <div class="section">
+      <label for="predictX">Ingrese un valor de X para predecir:</label>
+      <input [(ngModel)]="predictX" id="predictX" type="number">
+  
+      <button (click)="predecir()">Predecir</button>
+      <p *ngIf="prediccion" class="prediccion">Predicción: {{ prediccion }}</p>
+    </div>
   </div>
+  
